@@ -1,0 +1,19 @@
+//
+//  PrefixHeader.pch
+//  BasicFrame
+//
+//  Created by wenwen wu on 15/5/28.
+//  Copyright (c) 2015年 wuwenwen. All rights reserved.
+//
+
+#ifndef BasicFrame_PrefixHeader_pch
+#define BasicFrame_PrefixHeader_pch
+
+
+#import "Macros.h"
+#import "UIView+Frame.h"
+
+
+
+
+#endif
