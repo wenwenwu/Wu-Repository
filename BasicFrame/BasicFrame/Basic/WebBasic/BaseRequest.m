@@ -22,29 +22,12 @@ static dispatch_once_t onceToken;
     return _instance;
 }
 
--(BOOL)beforeExecute:(Response*)response {
-    
-    
-    
-    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        NSLog(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
-    }];
-    
-    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    
-    return true;
-}
-
 -(void)execute:(NSString*)uri params:(NSDictionary*)params callback:(void (^)(Response* response))callback {
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithBaseURL:[NSURL URLWithString:self.baseUrl]];
     
     Response* response = [[Response alloc]init];
     response.manager = manager;
-    
-//    if (![self beforeExecute:response]) {
-//        return;
-//    };
     
     [manager POST:uri parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
 
@@ -58,47 +41,20 @@ static dispatch_once_t onceToken;
         response.success = responseObject[@"success"];
         response.error = nil;
         
-        if (response.code.intValue== - 200) {
-            
-            [self afterExecute:response];
-            
-        }else{
-            
-            callback(response);
-            
-        }
+        callback(response);
+
         
 
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
        
         response.error = error;
-        
-        [self afterExecute:response];
-        
+                
         callback(response);
 
     }];
 }
 
--(BOOL)afterExecute:(Response*)response {
-    
-    if (response.error == nil) {
-        [self alertErrorMessage:response.messsage];
-    }
-    if ([response.error code] == NSURLErrorNotConnectedToInternet) {
-        [self alertErrorMessage:@"网络不给力"];
-        return FALSE;
-    }
-    [self alertErrorMessage:@"服务器故障，请稍后再试。"];
-    return true;
-}
-
--(void)alertErrorMessage:(NSString *)message
-{
-    
-    [[[UIAlertView alloc]initWithTitle:@"Error" message:message delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil, nil]show];
-}
 
 
 @end

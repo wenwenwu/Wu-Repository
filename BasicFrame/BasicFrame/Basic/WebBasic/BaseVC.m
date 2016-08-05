@@ -71,7 +71,6 @@
         
         loadHud.mode = MBProgressHUDModeCustomView;
         loadHud.customView = customView;
-        loadHud.minShowTime = 2;
         loadHud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
         loadHud.bezelView.color = [UIColor clearColor];
         

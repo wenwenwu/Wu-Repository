@@ -74,9 +74,8 @@
     [self load:@"niulanList" url:@"explore/getBanner" params:paramsNiulan];
     
     
-    
-    //通知中心对特定通知添加观察者
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkStatusChanged:) name:NTNetworkStatusNotificaton object:nil];
+//通知中心对特定通知添加观察者
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkStatusChanged:) name:NTNetworkStatusNotificaton object:nil];
 
 }
 
@@ -91,41 +90,55 @@
     [self showHud:@"保存失败，请重试保存失败，请重试保存失败请重试保存失败，请重试保存失败"];
 }
 #pragma mark-Methods
--(void)networkStatusChanged:(NSNotification *)notification{
-    
-    NSInteger statusInteger = [notification.userInfo[NTNetworkStatusNotificatonKey] integerValue];
-    NSLog(@"乌溜溜%@",AFStringFromNetworkReachabilityStatus(statusInteger));
-    
-}
+//通知中心对特定通知添加观察者
+//-(void)networkStatusChanged:(NSNotification *)notification{
+//    
+//    NSInteger statusInteger = [notification.userInfo[NTNetworkStatusNotificatonKey] integerValue];
+//    NSLog(@"乌溜溜%@",AFStringFromNetworkReachabilityStatus(statusInteger));
+//    
+//}
 
 #pragma mark-Response
 -(void)onRequestFinished:(NSString *)tag response:(Response *)response {
     
-    
+    /*同一页面多个Load请求，只需在第一个回调方法中进行各种异常状态的处理*/
     if([tag isEqualToString:@"niulanList"]) {
         
-        NSLog(@"%f",self.view.bottom);
-        
-        
-        if (response.error) {
+        if (response.error == nil) {
             
-            
-            NSError *error = response.error;
-            NSLog(@"错了个错 :%@",error);
-            
+            if (response.code.intValue == -200) {
+                
+                //服务器返回错误
+                [self showHud:response.messsage];
+                
+            }else{
+                
+                // 正确
+                NSNumber *code = response.code;
+                NSDictionary *data = response.data;
+                NSString *message = response.messsage;
+                NSNumber *sucess = response.success;
+                
+                NSLog(@"code :%@ ,data : %@,message : %@,sucess : %@",code,data,message,sucess);
+
+            }
         }else{
             
-            
-            NSNumber *code = response.code;
-            NSDictionary *data = response.data;
-            NSString *message = response.messsage;
-            NSNumber *sucess = response.success;
-            
-            NSLog(@"code :%@ ,data : %@,message : %@,sucess : %@",code,data,message,sucess);
-            
-            
-            
+            if ([response.error code] == NSURLErrorNotConnectedToInternet) {
+                
+                //网络不给力
+                [self showHud:@"网络不给力"];
+                
+            }else{
+                
+                //服务器故障
+                [self showHud:@"服务器故障，请稍后重试"];
+            }
         }
+        
+        
+            
+            
         
         
     }

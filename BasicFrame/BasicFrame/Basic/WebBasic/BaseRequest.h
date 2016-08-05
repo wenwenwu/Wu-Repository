@@ -12,10 +12,11 @@
 
 
 @interface BaseRequest : NSObject
+
 @property(strong, nonatomic)NSString* baseUrl;
+
 +(BaseRequest*)shared;
-//-(BOOL)beforeExecute:(Response*)response;
 -(void)execute:(NSString*)uri params:(NSDictionary*)params callback:(void (^)(Response* response))callback;
--(BOOL)afterExecute:(Response*)response;
--(void)alertErrorMessage:(NSString *)message;
+
+
 @end

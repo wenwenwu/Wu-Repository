@@ -21,18 +21,15 @@
     //BaseUrl
     [BaseRequest shared].baseUrl = NTBaseUrl;
 
-    
-    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        
-        NSNotification *notification = [NSNotification notificationWithName:NTNetworkStatusNotificaton object:nil userInfo:@{NTNetworkStatusNotificaton:@(status)}];
-        //通过通知中心发送通知
-        [[NSNotificationCenter defaultCenter] postNotification:notification];
-        
-        
-        
-    }];
-    
-    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    //观察者模式通知网络实时情况，应对少数特殊需求
+//    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+//        
+//        NSNotification *notification = [NSNotification notificationWithName:NTNetworkStatusNotificaton object:nil userInfo:@{NTNetworkStatusNotificatonKey:@(status)}];
+//        //通过通知中心发送通知
+//        [[NSNotificationCenter defaultCenter] postNotification:notification];
+//
+//    }];
+//    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
 
     
     return YES;
