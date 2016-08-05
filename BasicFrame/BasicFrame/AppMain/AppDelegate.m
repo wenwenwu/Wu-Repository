@@ -18,18 +18,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    
+    //BaseUrl
+    [BaseRequest shared].baseUrl = NTBaseUrl;
+
     
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         
-//        // 发送网络状态变更通知
-//        [NTNotification postNotificationName:NTNetworkStatusNotificaton object:nil userInfo:@{NTNetworkStatusNotificatonKey:@(currentStatus)}];
-
-        
-        //添加 字典，将label的值通过key值设置传递
-//        NSDictionary *dict =[[NSDictionary alloc] initWithObjectsAndKeys:self.textFieldOne.text,@"textOne",self.textFieldTwo.text,@"textTwo", nil];
-        //创建通知
-//        NSNotification *notification =[NSNotification NetworkStatusNotificaton: object:nil userInfo:dict];
         NSNotification *notification = [NSNotification notificationWithName:NTNetworkStatusNotificaton object:nil userInfo:@{NTNetworkStatusNotificaton:@(status)}];
         //通过通知中心发送通知
         [[NSNotificationCenter defaultCenter] postNotification:notification];

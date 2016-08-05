@@ -37,7 +37,7 @@ static dispatch_once_t onceToken;
 
 -(void)execute:(NSString*)uri params:(NSDictionary*)params callback:(void (^)(Response* response))callback {
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithBaseURL:[NSURL URLWithString:self.baseUrl]];
     
     Response* response = [[Response alloc]init];
     response.manager = manager;
