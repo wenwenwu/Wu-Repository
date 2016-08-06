@@ -84,6 +84,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)dealloc
+{
+    //通知中心对特定中心移除观察者
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:NTNetworkStatusNotificaton object:nil];
+}
 #pragma mark-Actions
 - (IBAction)saveButtonAction:(id)sender {
     
