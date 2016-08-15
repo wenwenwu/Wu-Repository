@@ -8,34 +8,33 @@
 
 #import "AccountTool.h"
 #import "Account.h"
-#import <MJExtension.h>
 
 @implementation AccountTool
+
+#define NTAccountPath  [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"account.archiver"]
 
 +(void)saveAccount:(Account *)account
 {
         
-    NSData *dataAccount=[NSKeyedArchiver archivedDataWithRootObject:account];
-    [[NSUserDefaults standardUserDefaults]setObject:dataAccount forKey:@"account"];
-    [[NSUserDefaults standardUserDefaults]synchronize];
-    
-    
-    
+    [NSKeyedArchiver archiveRootObject:account toFile:NTAccountPath];
 
 }
 
 +(Account *)account
 {
-    NSData *dataAccount = [[NSUserDefaults standardUserDefaults]objectForKey:@"account"];
-    Account *account=[NSKeyedUnarchiver unarchiveObjectWithData:dataAccount];
+    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"account.plist"];
     
-    
+
+    Account *account=[NSKeyedUnarchiver unarchiveObjectWithFile:NTAccountPath];
     
     return account;
 }
 
 +(void)deleteAccount
 {
-    [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"account"];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager removeItemAtPath:NTAccountPath error:nil];
+
 }
 @end
