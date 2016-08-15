@@ -21,9 +21,7 @@
 }
 
 +(Account *)account
-{
-    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"account.plist"];
-    
+{    
 
     Account *account=[NSKeyedUnarchiver unarchiveObjectWithFile:NTAccountPath];
     
