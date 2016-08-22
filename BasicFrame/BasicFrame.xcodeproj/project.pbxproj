@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		40A0CD67B30454E8DB925271 /* libPods-BasicFrame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7017086D3EF19C44013BA2DE /* libPods-BasicFrame.a */; };
+		5B1131301D6AE8B70092D835 /* NiulanVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1131291D6AE8B70092D835 /* NiulanVC.m */; };
+		5B1131311D6AE8B70092D835 /* BannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B11312C1D6AE8B70092D835 /* BannerModel.m */; };
+		5B1131351D6AF2E20092D835 /* BannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1131341D6AF2E20092D835 /* BannerView.m */; };
 		5B8C083B1D533FC900EA11B1 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8C08371D533FC900EA11B1 /* UIView+Frame.m */; };
 		5B8C083C1D533FC900EA11B1 /* Macros.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8C083A1D533FC900EA11B1 /* Macros.m */; };
-		5B8C08401D533FFD00EA11B1 /* NiulanVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8C083F1D533FFD00EA11B1 /* NiulanVC.m */; };
 		5B8C08B21D53421300EA11B1 /* BaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8C08AD1D53421300EA11B1 /* BaseRequest.m */; };
 		5B8C08B31D53421300EA11B1 /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8C08AF1D53421300EA11B1 /* BaseVC.m */; };
 		5B8C08B41D53421300EA11B1 /* Response.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8C08B11D53421300EA11B1 /* Response.m */; };
@@ -39,12 +41,16 @@
 /* Begin PBXFileReference section */
 		14001C3BEE6BA3414426CC0B /* Pods-BasicFrame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BasicFrame.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BasicFrame/Pods-BasicFrame.debug.xcconfig"; sourceTree = "<group>"; };
 		1C6291898789307CBD08D356 /* Pods-BasicFrame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BasicFrame.release.xcconfig"; path = "Pods/Target Support Files/Pods-BasicFrame/Pods-BasicFrame.release.xcconfig"; sourceTree = "<group>"; };
+		5B1131281D6AE8B70092D835 /* NiulanVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NiulanVC.h; sourceTree = "<group>"; };
+		5B1131291D6AE8B70092D835 /* NiulanVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NiulanVC.m; sourceTree = "<group>"; };
+		5B11312B1D6AE8B70092D835 /* BannerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerModel.h; sourceTree = "<group>"; };
+		5B11312C1D6AE8B70092D835 /* BannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerModel.m; sourceTree = "<group>"; };
+		5B1131331D6AF2E20092D835 /* BannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerView.h; sourceTree = "<group>"; };
+		5B1131341D6AF2E20092D835 /* BannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerView.m; sourceTree = "<group>"; };
 		5B8C08361D533FC900EA11B1 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		5B8C08371D533FC900EA11B1 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		5B8C08391D533FC900EA11B1 /* Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
 		5B8C083A1D533FC900EA11B1 /* Macros.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Macros.m; sourceTree = "<group>"; };
-		5B8C083E1D533FFD00EA11B1 /* NiulanVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NiulanVC.h; sourceTree = "<group>"; };
-		5B8C083F1D533FFD00EA11B1 /* NiulanVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NiulanVC.m; sourceTree = "<group>"; };
 		5B8C08AC1D53421300EA11B1 /* BaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseRequest.h; sourceTree = "<group>"; };
 		5B8C08AD1D53421300EA11B1 /* BaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseRequest.m; sourceTree = "<group>"; };
 		5B8C08AE1D53421300EA11B1 /* BaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseVC.h; sourceTree = "<group>"; };
@@ -92,6 +98,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B1131261D6AE8B60092D835 /* FirstPage */ = {
+			isa = PBXGroup;
+			children = (
+				5B1131271D6AE8B70092D835 /* Controller */,
+				5B11312A1D6AE8B70092D835 /* Model */,
+				5B11312D1D6AE8B70092D835 /* View */,
+			);
+			path = FirstPage;
+			sourceTree = "<group>";
+		};
+		5B1131271D6AE8B70092D835 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5B1131281D6AE8B70092D835 /* NiulanVC.h */,
+				5B1131291D6AE8B70092D835 /* NiulanVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5B11312A1D6AE8B70092D835 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5B11312B1D6AE8B70092D835 /* BannerModel.h */,
+				5B11312C1D6AE8B70092D835 /* BannerModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5B11312D1D6AE8B70092D835 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5B1131331D6AF2E20092D835 /* BannerView.h */,
+				5B1131341D6AF2E20092D835 /* BannerView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		5B8C08341D533FC900EA11B1 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,15 +159,6 @@
 				5B8C083A1D533FC900EA11B1 /* Macros.m */,
 			);
 			path = Macros;
-			sourceTree = "<group>";
-		};
-		5B8C083D1D533FFD00EA11B1 /* VCs */ = {
-			isa = PBXGroup;
-			children = (
-				5B8C083E1D533FFD00EA11B1 /* NiulanVC.h */,
-				5B8C083F1D533FFD00EA11B1 /* NiulanVC.m */,
-			);
-			path = VCs;
 			sourceTree = "<group>";
 		};
 		5B8C08AA1D53421300EA11B1 /* Basic */ = {
@@ -237,7 +271,7 @@
 		E811C5911B16D8DB0032C2F8 /* BasicFrame */ = {
 			isa = PBXGroup;
 			children = (
-				5B8C083D1D533FFD00EA11B1 /* VCs */,
+				5B1131261D6AE8B60092D835 /* FirstPage */,
 				5BC4ABA41D52C3A60022D422 /* AppMain */,
 				5BC4ABAA1D52C4A10022D422 /* Base.lproj */,
 				5B8C08AA1D53421300EA11B1 /* Basic */,
@@ -429,11 +463,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B8C08BE1D53421900EA11B1 /* Account.m in Sources */,
+				5B1131311D6AE8B70092D835 /* BannerModel.m in Sources */,
 				5B8C08B31D53421300EA11B1 /* BaseVC.m in Sources */,
 				5B8C083C1D533FC900EA11B1 /* Macros.m in Sources */,
 				5B8C083B1D533FC900EA11B1 /* UIView+Frame.m in Sources */,
-				5B8C08401D533FFD00EA11B1 /* NiulanVC.m in Sources */,
 				5B8C08BF1D53421900EA11B1 /* AccountTool.m in Sources */,
+				5B1131301D6AE8B70092D835 /* NiulanVC.m in Sources */,
+				5B1131351D6AF2E20092D835 /* BannerView.m in Sources */,
 				5B8C08B41D53421300EA11B1 /* Response.m in Sources */,
 				5BC4ABA91D52C3A60022D422 /* main.m in Sources */,
 				5B8C08B21D53421300EA11B1 /* BaseRequest.m in Sources */,

@@ -10,8 +10,12 @@
 #import "Account.h"
 #import "AccountTool.h"
 #import "CacheTool.h"
-
+#import <MJExtension.h>
+#import "BannerView.h"
+#import "BannerModel.h"
 @interface NiulanVC ()
+
+@property (nonatomic ,strong) BannerView *bannerView;
 
 @end
 
@@ -55,6 +59,9 @@
 //    NSLog(@"sql实践 %@",dicArray2);
 
     
+    [self setUpBannerView];
+    
+//    //网络框架实践
     NSDictionary *paramsNiulan=@{
                                  @"uid":@"12158",
                                  @"phone":@"iPhone Simulator",
@@ -88,11 +95,17 @@
 {
     //通知中心对特定中心移除观察者
 //    [[NSNotificationCenter defaultCenter] removeObserver:self name:NTNetworkStatusNotificaton object:nil];
+    
 }
 #pragma mark-Actions
 - (IBAction)saveButtonAction:(id)sender {
     
     [self showHud:@"保存失败，请重试保存失败，请重试保存失败请重试保存失败，请重试保存失败"];
+    
+}
+-(void)bannerTapAction
+{
+    
 }
 #pragma mark-Methods
 //通知中心对特定通知添加观察者
@@ -102,6 +115,21 @@
 //    NSLog(@"乌溜溜%@",AFStringFromNetworkReachabilityStatus(statusInteger));
 //    
 //}
+
+
+-(void)setUpBannerView
+{
+    BannerView *bannerView = [[BannerView alloc] initWithFrame:CGRectMake(0, 0, NTScreenWidth, NTScreenWidth * 0.5)];
+    bannerView.userInteractionEnabled = YES;
+    _bannerView = bannerView;
+    
+    UITapGestureRecognizer *bannerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(bannerTapAction)];
+    bannerTap.numberOfTapsRequired = 1;
+    [bannerView addGestureRecognizer:bannerTap];
+    
+    [self.view addSubview:bannerView];
+    
+}
 
 #pragma mark-Response
 -(void)onRequestFinished:(NSString *)tag response:(Response *)response {
@@ -118,13 +146,25 @@
                 
             }else{
                 
-                // 正确
-                NSNumber *code = response.code;
-                NSDictionary *data = response.data;
-                NSString *message = response.messsage;
-                NSNumber *sucess = response.success;
+                NSArray *bannerArray = [BannerModel mj_objectArrayWithKeyValuesArray:response.data[@"list"]];
+                NSMutableArray *imagesArray = [NSMutableArray arrayWithCapacity:1];
+//                for (Banner *banner in bannerArray) {
+//                    NSString *imageUrl = banner.image;
+//                    [imagesArray addObject:imageUrl];
+//
+//                }
                 
-                NSLog(@"code :%@ ,data : %@,message : %@,sucess : %@",code,data,message,sucess);
+                for (int i = 0; i < 5; i ++) {
+                    
+                    BannerModel *banner = bannerArray[i];
+                    NSString *imageUrl = banner.image;
+                    [imagesArray addObject:imageUrl];
+
+                }
+                
+
+                self.bannerView.bannerImages = imagesArray;
+                
 
             }
         }else{

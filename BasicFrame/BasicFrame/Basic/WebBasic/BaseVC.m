@@ -25,7 +25,7 @@
         
         [UIActivityIndicatorView appearanceWhenContainedIn:[MBProgressHUD class], nil].activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
         
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
         hud.bezelView.color=[UIColor clearColor];
         hud.minShowTime = 1;
@@ -56,7 +56,7 @@
     if (_loadHud == nil) {
         
         
-        MBProgressHUD *loadHud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+        MBProgressHUD *loadHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
         NSMutableArray *animationImages = [NSMutableArray array];
         for (NSUInteger i = 1; i<=3; i++) {
@@ -102,7 +102,7 @@
 
 -(void)showHud:(NSString *)text
 {
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     hud.mode = MBProgressHUDModeText;
     hud.detailsLabel.text = text;

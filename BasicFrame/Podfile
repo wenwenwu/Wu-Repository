@@ -8,4 +8,5 @@ pod 'MJExtension'
 pod 'MJRefresh'
 pod 'MBProgressHUD'
 pod 'Masonry'
+pod 'SDWebImage'
 end
