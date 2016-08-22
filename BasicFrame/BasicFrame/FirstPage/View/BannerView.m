@@ -8,6 +8,7 @@
 
 #import "BannerView.h"
 #import <UIImageView+WebCache.h>
+#import <Masonry.h>
 
 @interface BannerView () <UIScrollViewDelegate> {
     
@@ -116,8 +117,14 @@
     
     //pageControl
     _pageControl.hidden = _bannerCount < 2;
-    _pageControl.frame = CGRectMake(0, 0, 14 * (_bannerCount - 1) + 6, 6);
-    _pageControl.center = CGPointMake(self.center.x, self.height - 13);
+    [_pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
+
+        make.width.mas_greaterThanOrEqualTo(0);
+        make.bottom.equalTo(self.mas_bottom);
+        make.centerX.equalTo(self.mas_centerX);
+        
+    }];
+
     
 }
 
@@ -155,8 +162,10 @@
 }
 
 
-- (void)reloadImage {
-    
+- (void)resetImages {
+    /**
+     *  永远保持中图居中、右图居右、左图居左；中图当前图，右图下一张，左图最后一张
+     */
     CGPoint offset = [_scrollView contentOffset];
     if (offset.x > NTScreenWidth) { //向右滑动
         self.currentImageIndex = (_currentImageIndex + 1) % _bannerCount;
@@ -171,7 +180,7 @@
     [_leftImageView sd_setImageWithURL:[NSURL URLWithString:_bannerImages[leftBannerIndex]] placeholderImage:[UIImage imageNamed:@"failure"]];
     [_rightImageView sd_setImageWithURL:[NSURL URLWithString:_bannerImages[rightBannerIndex]] placeholderImage:[UIImage imageNamed:@"failure"]];
     
-    [_scrollView setContentOffset:CGPointMake(NTScreenWidth, 0) animated:NO];
+    [_scrollView setContentOffset:CGPointMake(NTScreenWidth, 0) animated:NO];//因为和滑动一致，故看不出变化
     
     //设置分页
     _pageControl.currentPage = _currentImageIndex;
@@ -191,12 +200,12 @@
 //非人为拖拽scrollView导致滚动完毕
 -(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
     
-    [self reloadImage];
+    [self resetImages];
 }
 //人为拖拽scrollView导致滚动完毕
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     
-    [self reloadImage];
+    [self resetImages];
 }
 
 @end
